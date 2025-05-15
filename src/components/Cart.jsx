@@ -28,19 +28,19 @@ export default function Cart({
           return (
             <div
               key={device.id}
-              className="flex gap-4 p-4 border rounded-lg shadow-md bg-white items-center"
+              className="flex flex-col md:flex-row gap-4 p-4 border rounded-lg shadow-md bg-white items-center"
             >
               <img
                 src={device.url}
                 alt={device.name}
-                className="w-16 h-16 object-contain flex-shrink-0"
+                className="w-20 h-20 object-contain flex-shrink-0"
               />
-              <div className="grid grid-cols-7 gap-4 w-full text-sm font-medium text-gray-800">
-                <div className="truncate text-gray-800 font-bold">
+              <div className="grid grid-cols-1 md:grid-cols-7 gap-4 w-full text-sm font-medium text-gray-800">
+                <div className="truncate text-gray-800 font-bold text-center md:text-left">
                   {device.name}
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col md:flex-row items-center gap-2">
                   <span className="text-gray-800">Adet:</span>
                   <input
                     type="number"
@@ -50,11 +50,11 @@ export default function Cart({
                     onChange={(e) =>
                       handleUpdateDevice(device.id, "count", e.target.value)
                     }
-                    className="border p-1 w-16 text-center"
+                    className="border p-1 w-full md:w-16 text-center"
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col md:flex-row items-center gap-2">
                   <span className="text-gray-800">Güç:</span>
                   <input
                     type="number"
@@ -62,11 +62,11 @@ export default function Cart({
                     onChange={(e) =>
                       handleUpdateDevice(device.id, "power", e.target.value)
                     }
-                    className="border p-1 w-20 text-center"
+                    className="border p-1 w-full md:w-20 text-center"
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col md:flex-row items-center gap-2">
                   <span className="text-gray-800">Günlük:</span>
                   <input
                     type="number"
@@ -80,11 +80,11 @@ export default function Cart({
                         e.target.value
                       )
                     }
-                    className="border p-1 w-20 text-center"
+                    className="border p-1 w-full md:w-20 text-center"
                   />
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex flex-col md:flex-row items-center gap-2">
                   <span className="text-gray-800">Haftalık:</span>
                   <input
                     type="number"
@@ -98,14 +98,14 @@ export default function Cart({
                         e.target.value
                       )
                     }
-                    className="border p-1 w-20 text-center"
+                    className="border p-1 w-full md:w-20 text-center"
                   />
                 </div>
 
-                <div className="text-blue-700 font-semibold">
+                <div className="text-blue-700 font-semibold text-center md:text-left">
                   Günlük Tüketim: {dailyConsumption.toFixed(2)} kWh
                 </div>
-                <div className="text-blue-700 font-semibold">
+                <div className="text-blue-700 font-semibold text-center md:text-left">
                   Haftalık Tüketim: {weeklyConsumption.toFixed(2)} kWh
                 </div>
               </div>
@@ -113,11 +113,13 @@ export default function Cart({
           );
         })
       ) : (
-        <p className="text-gray-700 font-medium">Henüz cihaz seçilmedi.</p>
+        <p className="text-gray-700 font-medium text-center md:text-left">
+          Henüz cihaz seçilmedi.
+        </p>
       )}
 
       {selectedDevices.length > 0 && (
-        <div className="mt-6 p-4 text-green-600 bg-white font-bold text-lg border rounded-lg shadow-md">
+        <div className="mt-6 p-4 text-green-600 bg-white font-bold text-lg border rounded-lg shadow-md text-center md:text-left">
           <p>Toplam Günlük Tüketim: {totalDailyConsumption.toFixed(2)} kWh</p>
           <p>
             Toplam Haftalık Tüketim: {totalWeeklyConsumption.toFixed(2)} kWh
@@ -126,12 +128,12 @@ export default function Cart({
       )}
 
       {selectedDevices.length > 0 && (
-        <div className="flex justify-end mt-6">
+        <div className="flex justify-center md:justify-end mt-6">
           <button
             onClick={handleClearCart}
-            className="px-6 py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-700 transition"
+            className="px-6 py-3 bg-red-500 text-white rounded-lg font-semibold hover:bg-red-700 transition cursor-pointer"
           >
-            SEPETİ TEMİZLE
+            SEÇİLENLERİ TEMİZLE
           </button>
         </div>
       )}

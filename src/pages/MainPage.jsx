@@ -38,8 +38,8 @@ export default function MainPage() {
 
   return (
     <div className="px-6 md:px-20 bg-blue-300">
-      <div className="flex justify-between p-6 md:px-10">
-        <h1 className="text-2xl font-bold ">Elektronik Cihazlar</h1>
+      <div className="flex justify-between p-4 ">
+        <h1 className="text-2xl font-bold ">Cihazlarınızı seçiniz:</h1>
         {selectedDevices.length > 0 && (
           <h2
             className="text-xl font-bold text-gray-600 cursor-pointer hover:text-green-500 transition rounded-lg p-3 bg-white shadow-md"
